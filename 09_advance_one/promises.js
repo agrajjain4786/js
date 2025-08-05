@@ -95,6 +95,6 @@ fetch('https://api.github.com/users/agrajjain4786')
 }).then((response)=>{
     console.log(response)
 })
-.catch((e)=>{
-    console.log(e)
+.catch((error)=>{
+    console.log(error)
 })
