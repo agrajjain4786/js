@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    0 UNSENT Client has been created. open() not called yet. 1 OPENED open() has
+    been called. 2 HEADERS_RECEIVED send() has been called, and headers and
+    status are available. 3 LOADING Downloading; responseText holds partial
+    data. 4 DONE The operation is complete.
+    <div id="card"></div>
+  </body>
+  <script>
+    // console.log(button);
+    let data;
+    const requestUrl = "https://api.github.com/users/agrajjain4786";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", requestUrl);
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);
+      //   console.log(data);
+
+      if (xhr.readyState === 4) {
+        let data = this.responseText;
+        console.log(typeof data);
+        data = JSON.parse(this.responseText);
+        console.log(typeof data);
+        console.log(data);
+        // img.innerHTML = `${data.avatar_url}`;
+        console.log(data.avatar_url);
+
+        const card = document.getElementById("card");
+        card.innerHTML = '<button id = "button">click here</button>';
+        // console.log(card);
+        card.addEventListener("click", function () {
+          const button = document.getElementById("button");
+          button.innerHTML = `
+            <img src = "${data.avatar_url}"><h1>name : ${data.name}</h1><h1>UserId : ${data.id}</h1></img>
+            `;
+        });
+
+        // let img = document.createElement("img");
+        // button.addEventListener("click", function () {
+        //   img.setAttribute("src", data.avatar_url);
+        //   body.appendChild(img);
+        //   console.log(img);
+        // });
+      }
+    };
+
+    xhr.send();
+  </script>
+</html>
