@@ -19,17 +19,17 @@
     const xhr = new XMLHttpRequest();
     xhr.open("GET", requestUrl);
     xhr.onreadystatechange = function () {
-      console.log(xhr.readyState);
+      //   console.log(xhr.readyState);
       //   console.log(data);
 
       if (xhr.readyState === 4) {
         let data = this.responseText;
-        console.log(typeof data);
+        // console.log(typeof data);
         data = JSON.parse(this.responseText);
-        console.log(typeof data);
-        console.log(data);
+        // console.log(typeof data);
+        // console.log(data);
         // img.innerHTML = `${data.avatar_url}`;
-        console.log(data.avatar_url);
+        // console.log(data.avatar_url);
 
         const card = document.getElementById("card");
         card.innerHTML = '<button id = "button">click here</button>';
